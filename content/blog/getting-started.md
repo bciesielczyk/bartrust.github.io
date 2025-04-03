@@ -1,10 +1,12 @@
 +++
 title = "Getting Started with Rust and AI"
 date = 2025-04-03
-[taxonomies]
-tags = ["rust", "ai", "learning"]
+
 [extra]
 excerpt = "My journey into the world of Rust programming and Artificial Intelligence begins here."
+
+[taxonomies]
+tags = ["rust", "ai", "learning"]
 +++
 
 # Getting Started with Rust and AI
