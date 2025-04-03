@@ -9,6 +9,10 @@ compile_sass = false
 build_search_index = true
 generate_feeds = true
 
+# Taxonomies
+[taxonomies]
+tags = { path = "tags" }
+
 [markdown]
 highlight_code = true
 highlight_theme = "dracula"

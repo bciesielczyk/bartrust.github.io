@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .post-header {
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
+    .post-title {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+    }
+    
+    .post-meta {
+        color: #6b7280;
+        margin-bottom: 1rem;
+    }
+    
+    .post-date {
+        margin-right: 1rem;
+    }
+    
+    .post-tags {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+    
+    .post-tag {
+        background-color: #e5e7eb;
+        color: #4b5563;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        text-decoration: none;
+    }
+    
+    .post-content {
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.8;
+    }
+    
+    .post-content h1 {
+        font-size: 2rem;
+        margin: 2rem 0 1rem;
+        color: var(--primary-color);
+    }
+    
+    .post-content h2 {
+        font-size: 1.5rem;
+        margin: 1.5rem 0 1rem;
+        color: var(--primary-color);
+    }
+    
+    .post-content h3 {
+        font-size: 1.25rem;
+        margin: 1.25rem 0 0.75rem;
+    }
+    
+    .post-content p {
+        margin-bottom: 1.5rem;
+    }
+    
+    .post-content ul, .post-content ol {
+        margin-bottom: 1.5rem;
+        padding-left: 2rem;
+    }
+    
+    .post-content li {
+        margin-bottom: 0.5rem;
+    }
+    
+    .post-content pre {
+        background-color: #1e293b;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        margin-bottom: 1.5rem;
+    }
+    
+    .post-content code {
+        font-family: monospace;
+    }
+    
+    .post-content blockquote {
+        border-left: 4px solid var(--primary-color);
+        padding-left: 1rem;
+        font-style: italic;
+        color: #4b5563;
+        margin-bottom: 1.5rem;
+    }
+    
+    .post-navigation {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #e5e7eb;
+    }
+    
+    .post-navigation a {
+        color: var(--primary-color);
+        text-decoration: none;
+    }
+    
+    .post-navigation a:hover {
+        text-decoration: underline;
+    }
+    
+    .back-to-blog {
+        display: block;
+        text-align: center;
+        margin-top: 2rem;
+        color: var(--primary-color);
+        text-decoration: none;
+    }
+    
+    .back-to-blog:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<article>
+    <header class="post-header">
+        <h1 class="post-title">{{ page.title }}</h1>
+        <div class="post-meta">
+            <span class="post-date">{{ page.date | date(format="%B %d, %Y") }}</span>
+        </div>
+        
+        {% if page.taxonomies.tags %}
+        <div class="post-tags">
+            {% for tag in page.taxonomies.tags %}
+            <a href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}" class="post-tag">#{{ tag }}</a>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </header>
+    
+    <div class="post-content">
+        {{ page.content | safe }}
+    </div>
+    
+    <a href="{{ get_url(path="blog") | safe }}" class="back-to-blog">← Back to all posts</a>
+</article>
+{% endblock content %}

@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .tag-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    
+    .tag-title {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+    }
+    
+    .tag-description {
+        color: #4b5563;
+        margin-bottom: 1rem;
+    }
+    
+    .posts-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+    
+    .post-card {
+        border-radius: 0.5rem;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .post-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .post-content {
+        padding: 1.5rem;
+    }
+    
+    .post-title {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: var(--primary-color);
+    }
+    
+    .post-date {
+        color: #6b7280;
+        font-size: 0.875rem;
+        margin-bottom: 1rem;
+    }
+    
+    .post-excerpt {
+        color: #4b5563;
+        margin-bottom: 1rem;
+    }
+    
+    .post-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .post-tag {
+        background-color: #e5e7eb;
+        color: #4b5563;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        text-decoration: none;
+    }
+    
+    .read-more {
+        display: inline-block;
+        margin-top: 1rem;
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+    }
+    
+    .read-more:hover {
+        text-decoration: underline;
+    }
+    
+    .back-to-tags {
+        display: block;
+        text-align: center;
+        margin-top: 3rem;
+        color: var(--primary-color);
+        text-decoration: none;
+    }
+    
+    .back-to-tags:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="tag-header">
+    <h1 class="tag-title">#{{ term.name }}</h1>
+    <div class="tag-description">
+        Posts tagged with <strong>{{ term.name }}</strong>
+    </div>
+</div>
+
+<div class="posts-list">
+    {% for page in term.pages %}
+    <article class="post-card">
+        <div class="post-content">
+            <h2 class="post-title">
+                <a href="{{ page.permalink | safe }}">{{ page.title }}</a>
+            </h2>
+            <div class="post-date">{{ page.date | date(format="%B %d, %Y") }}</div>
+            
+            {% if page.extra.excerpt %}
+            <div class="post-excerpt">{{ page.extra.excerpt }}</div>
+            {% endif %}
+            
+            {% if page.taxonomies.tags %}
+            <div class="post-tags">
+                {% for tag in page.taxonomies.tags %}
+                <a href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}" class="post-tag">#{{ tag }}</a>
+                {% endfor %}
+            </div>
+            {% endif %}
+            
+            <a href="{{ page.permalink | safe }}" class="read-more">Read more →</a>
+        </div>
+    </article>
+    {% endfor %}
+</div>
+
+<a href="{{ get_taxonomy_url(kind="tags") | safe }}" class="back-to-tags">← Back to all tags</a>
+{% endblock content %}
