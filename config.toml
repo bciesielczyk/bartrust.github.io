@@ -1,0 +1,19 @@
+# Site configuration
+base_url = "https://bartrust.com"
+title = "Bartrust - Software Developer"
+description = "Personal website of Bartrust, Software Developer and Technology Enthusiast"
+default_language = "en"
+
+# Build settings
+compile_sass = false
+build_search_index = true
+generate_feeds = true
+
+[markdown]
+highlight_code = true
+highlight_theme = "dracula"
+
+[extra]
+author = "Bartrust"
+github = "https://github.com/bartrust"
+linkedin = "https://linkedin.com/in/bartrust"
