@@ -11,7 +11,7 @@ generate_feeds = true
 
 # Taxonomies
 [taxonomies]
-tags = { path = "tags" }
+tags = "tags"
 
 [markdown]
 highlight_code = true
