@@ -1,5 +1,5 @@
 # Site configuration
-base_url = "https://bartrust.com"
+base_url = "https://bciesielczyk.github.io"
 title = "Bartrust - Software Developer"
 description = "Personal website of Bartrust, Software Developer and Technology Enthusiast"
 default_language = "en"
