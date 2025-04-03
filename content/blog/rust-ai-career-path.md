@@ -2,9 +2,6 @@
 title = "My Rust and AI Career Development Path"
 date = 2025-04-03
 excerpt = "A comprehensive roadmap for developing skills in both Rust programming and AI technologies, leveraging my QA background."
-
-[taxonomies]
-tags = ["rust", "ai", "career", "learning"]
 +++
 
 # My Rust and AI Career Development Path

@@ -101,13 +101,7 @@
             <div class="post-excerpt">{{ page.extra.excerpt }}</div>
             {% endif %}
             
-            {% if page.taxonomies.tags %}
-            <div class="post-tags">
-                {% for tag in page.taxonomies.tags %}
-                <a href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}" class="post-tag">#{{ tag }}</a>
-                {% endfor %}
-            </div>
-            {% endif %}
+            <!-- Tags removed for now -->
             
             <a href="{{ page.permalink | safe }}" class="read-more">Read more →</a>
         </div>

@@ -132,13 +132,7 @@
             <span class="post-date">{{ page.date | date(format="%B %d, %Y") }}</span>
         </div>
         
-        {% if page.taxonomies.tags %}
-        <div class="post-tags">
-            {% for tag in page.taxonomies.tags %}
-            <a href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}" class="post-tag">#{{ tag }}</a>
-            {% endfor %}
-        </div>
-        {% endif %}
+        <!-- Tags removed for now -->
     </header>
     
     <div class="post-content">
